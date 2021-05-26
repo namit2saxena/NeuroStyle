@@ -1,0 +1,61 @@
+
+{% extends "base.html" %}
+{% block title %}{{ page_name }}{% endblock %}
+{% block content %}
+	{% if is_home==True %}
+        <form method="POST" enctype="multipart/form-data">
+        	<label>Click to upload files.</label>
+        	<div class="form-group">
+			    <div class="file-upload">
+				    <label for="upload1" class="file-upload__label">Content File</label>
+				    <input id="upload1" class="file-upload__input" type="file" name="file1">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="file-upload">
+				    <label for="upload2" class="file-upload__label">Style File</label>
+				    <input id="upload2" class="file-upload__input" type="file" name="file2">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div>
+					<label for="text-box">Blend Amount: </label>
+					<input type="text" name="epochs_cnt">
+				</div>
+			</div>
+			<input type="submit" value="Submit">
+		</form>
+		{% if not_complete==True %}
+		<strong> Incomplete data entered. </strong>
+		{% endif %}
+    {% else %}
+    	<ul class="cards">
+		    <li class="cards_item">
+		      <div class="card">
+		        <div class="card_image"><img src="{{ url_for('static', filename=f1_name) }}" alt="Content Image"></div>
+		        <div class="card_content">
+		          <h2 class="card_title">Content Image</h2>
+		        </div>
+		      </div>
+		    </li>
+		    <li class="cards_item">
+		      <div class="card">
+		        <div class="card_image"><img src="{{ url_for('static', filename=f2_name) }}" alt="Style Image"></div>
+		        <div class="card_content">
+		          <h2 class="card_title">Style Image</h2>
+		        </div>
+		      </div>
+		    </li>
+		    <li class="cards_item">
+		      <div class="card">
+		        <div class="card_image"><img src="{{ url_for('static', filename=f3_name) }}" alt="Converted Image"></div>
+		        <div class="card_content">
+		          <h2 class="card_title">Converted Image</h2>
+		        </div>
+		      </div>
+		    </li>
+		</ul>
+    {% endif %}
+{% endblock %}

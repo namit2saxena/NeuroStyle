@@ -1,0 +1,7 @@
+*.h5
+*.png
+*.jpg
+*.jpeg
+__pycache__/
+.env/
+.idea/
